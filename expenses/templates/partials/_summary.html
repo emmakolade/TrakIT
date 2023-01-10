@@ -1,0 +1,25 @@
+<div class="col-sm-12 col-md-12 col-lg-8 main-area-content">
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="imp-info income-txt">
+            <span class="info-text"> Total Income </span>
+            <span class="info-amt bold"> $ {{total_income}} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="imp-info expense-txt">
+            <span class="info-text"> Expense Summary </span>
+            <span class="info-amt bold">$ {{total_expense}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 40%">{% include 'income/income_stats.html' %}</div>
+</div>

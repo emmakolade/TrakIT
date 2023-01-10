@@ -1,0 +1,85 @@
+{% extends 'expenses/base.html' %} {% load static %} {% block content %}
+<div class="container mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Expenses</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Expenses</li>
+    </ol>
+  </nav>
+</div>
+<div class="content">
+  <form class="form" id="add-expense-form" action="{% url 'add_expense' %}" method="post">
+    {% csrf_token %}
+
+    <label>Category</label>
+    <select name="category">
+      {% for category in categories%}
+      <option name="category" value="{{category.name}}">
+        {{category.name}}
+      </option>
+      {% endfor %}
+    </select>
+    <label>Description</label>
+    <input
+      type="text"
+      name="description"
+      placeholder="description"
+      value="{{values.description}}"
+    />
+    <label>Amount</label>
+    <input
+      value="{{values.amount}}"
+      type="number"
+      name="amount"
+      placeholder="input amount"
+    />
+    <input type="submit" value="Add" class="btn btn-info" />
+  </form>
+</div>
+
+{% comment %} <script>
+  const renderChart = (data, labels) => {
+    const ctx = document.getElementById("myChart");
+
+    const myChart = new Chart(ctx, {
+      type: "pie",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "12 Month Expense",
+            data: data,
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {},
+    });
+  };
+
+  const getChartData = () => {
+    fetch("/expense_summary/")
+      .then((res) => res.json())
+      .then((results) => {
+        const category_data = results.expense_category_data;
+        const [labels, data] = [
+          Object.keys(category_data),
+          Object.values(category_data),
+        ];
+        renderChart(data, labels);
+      });
+  };
+  document.onload = getChartData();
+
+  // add event listener to form to trigger chart update when form is submitted
+  const form = document.getElementById("add-expense-form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    // submit the form to add the new expense to the database
+    form.submit();
+    // update the chart with new data
+    getChartData();
+  });
+</script> {% endcomment %}
+
+{% endblock content %}

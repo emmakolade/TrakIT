@@ -1,0 +1,87 @@
+{% extends 'expenses/base.html' %} 
+{% load static %} 
+{% block content %}
+
+{% include 'partials/summary.html' %}
+    <div class="col-sm-12 col-md-12 col-lg-4 transaction-history">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <i class="fas fa-file-signature"></i>Transactions / Expenses
+          <div id="new-expense">
+            <a href="{% url 'add_expense' %}">
+              <i class="fa-regular fa-plus" id="new-expense"></i>
+              </a>
+          </div>
+          <div class="example form-group" style="margin: auto; max-width: 300px">
+          <form method= "POST" action="{% url 'search_expense' %}">
+            {% csrf_token %}
+          <input
+            id="searchField"
+            class= "form-control"
+            type="text"
+            placeholder="Search Expenses.."
+            name="search"/>
+          </form>
+        </div>
+        </div>
+        <div class="card-body">
+          {% for expense in expenses %}
+          <ul id="normalExpense" class="transaction-history-wrapper">
+            <li>
+              <div class="row">
+                <div class="col-8 f">
+                  <!-- <i class="fab fa-aviato"></i> -->
+                  <span class="spending-text">
+                    <span class="heading"> {{expense.description}} </span>
+                    <span class="sub">{{expense.date}}</span>
+                    <span class="sub2">category: {{expense.category}}</span>
+                  </span>
+                </div>
+
+                <div class="col-4 amt-right">
+                  <span class="amount expense">$ {{expense.amount}} </span>
+                  <span>
+                    <a href="{% url 'edit_expense' expense.id %}">
+                      <button class="trash">
+                        <i class="fa-regular fa-pen-to-square"></i></button>
+                      </a>
+                    <a href="{% url 'delete_expense' expense.id %}">
+                      <button class="trash">
+                      <i class="fa-regular fa-trash-can"></i></button>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ul>
+          {% endfor %}
+        </div>
+
+        <div class="card-footer">
+          <div class="transaction-footer">
+            <div class="missing-transactions">
+              <span>
+                Showing Page {{expenses.number}} of
+                {{expenses.paginator.num_pages}}</span>
+            </div>
+            {% if expenses.has_previous %}
+            <button class="btn btn-info">
+              <a href="?page={{ expenses.previous_page_number }}">Previous</a>
+            </button>
+            {% endif %} {% for page_number in expenses.paginator.page_range %}
+            {% if page_number == expenses.number %}
+            <strong>{{ page_number }}</strong>
+            {% else %}
+            <a href="?page={{ page_number }}">{{ page_number }}</a>
+            {% endif %} {% endfor %} {% if expenses.has_next %}
+            <button class="btn btn-info">
+              <a href="?page={{ expenses.next_page_number }}">>></a>
+            </button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+  </div>
+</div>

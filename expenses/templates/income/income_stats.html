@@ -1,0 +1,32 @@
+{% load static %}
+
+
+
+
+<div>
+  <canvas id="myChart" width="400" height="400"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [{% for income in income %}'{{income.source}}', {% endfor %}],
+      datasets: [{
+        label: '',
+        data: [{% for income in income %} {{income.amount}}, {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+    }
+  });
+</script>
+ 

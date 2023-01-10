@@ -1,0 +1,40 @@
+{% extends 'expenses/base.html' %} {% block content %}
+<div class="container mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'income' %}">Income</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit Income</li>
+    </ol>
+  </nav>
+</div>
+<div class="content">
+  <form class="form" action="{% url 'edit_income' income.id %}" method="post">
+    {% csrf_token %} {% include 'partials/_messages.html' %}
+
+    <label>Source</label>
+    <select name="source">
+      <option selected name="source" value="{{values.source}}">
+        {{values.source}}
+      </option>
+      {% for source in sources%}
+      <option name="source" value="{{source.name}}">{{source.name}}</option>
+      {% endfor %}
+    </select>
+    <label>Description</label>
+    <input
+      type="text"
+      name="description"
+      placeholder="description"
+      value="{{values.description}}"
+    />
+    <label>Amount</label>
+    <input
+      value="{{values.amount}}"
+      type="number"
+      name="amount"
+      placeholder="input amount"
+    />
+    <input type="submit" value="Update" class="btn btn-info" />
+  </form>
+</div>
+{% endblock content %}

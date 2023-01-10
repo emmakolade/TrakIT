@@ -1,0 +1,86 @@
+{% extends 'expenses/base.html' %} {% load static %} {% block content %}
+<div class="main-area container-fluid">
+  <div class="row">
+    {% include 'partials/_summary.html' %} {% comment %} {% if income.count %}
+    {% endcomment %}
+    <div
+      id="normalExpense"
+      class="col-sm-12 col-md-12 col-lg-4 transaction-history"
+    >
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <i class="fas fa-file-signature"></i>Transactions / Income
+          <div id="new-expense">
+            <a href="{% url 'add_income' %}"
+              ><button id="new-expense" class="btn btn-info">
+                Add Income
+              </button></a
+            >
+          </div>
+        </div>
+
+        <div class="card-body">
+          {% for income in income %}
+          <ul class="transaction-history-wrapper">
+            <li>
+              <div class="row">
+                <div class="col-8 f">
+                  <!-- <i class="fab fa-aviato"></i> -->
+                  <span class="spending-text">
+                    <span class="heading"> {{income.description}} </span>
+                    <span class="sub">{{income.date}}</span>
+                    <span class="sub2">source: {{income.source}}</span>
+                  </span>
+                </div>
+
+                <div class="col-4 amt-right">
+                  <span class="amount income"> {{income.amount}} </span>
+                  <span>
+                    <a href="{% url 'edit_income' income.id %}"
+                      ><button class="trash">
+                        <i class="fa-regular fa-pen-to-square"></i></button
+                    ></a>
+
+                    <a href="{% url 'delete_income' income.id %}"
+                      ><button class="trash">
+                        <i class="fa-regular fa-trash-can"></i></button
+                    ></a>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ul>
+          {% endfor %}
+        </div>
+        <div class="card-footer">
+          <div class="transaction-footer">
+            <div class="missing-transactions">
+              <span>
+                Showing Page {{income.number}} of
+                {{income.paginator.num_pages}}</span
+              >
+            </div>
+
+            {% if income.has_previous %}
+            <button class="btn btn-info">
+              <a href="?page={{ income.previous_page_number }}">Previous</a>
+            </button>
+            {% endif %} {% for page_number in income.paginator.page_range %}
+            {% if page_number == income.number %}
+            <strong>{{ page_number }}</strong>
+            {% else %}
+            <a href="?page={{ page_number }}">{{ page_number }}</a>
+            {% endif %} {% endfor %} {% if income.has_next %}
+            <button class="btn btn-info">
+              <a href="?page={{ income.next_page_number }}">>></a>
+            </button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %} {% endif %} {% endcomment %}
+  </div>
+</div>
+
+{% endblock content %}

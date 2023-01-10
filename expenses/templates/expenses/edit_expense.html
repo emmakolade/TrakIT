@@ -1,0 +1,42 @@
+{% extends 'expenses/base.html' %} {% block content %}
+<div class="container mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Expenses</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit Expense</li>
+    </ol>
+  </nav>
+</div>
+<div class="content">
+  <form class="form" action="{% url 'edit_expense' expense.id %}" method="post">
+    {% csrf_token %} {% include 'partials/_messages.html' %}
+
+    <label>Category</label>
+    <select name="category">
+      <option selected name="category" value="{{values.category}}">
+        {{values.category}}
+      </option>
+      {% for category in categories%}
+      <option name="category" value="{{category.name}}">
+        {{category.name}}
+      </option>
+      {% endfor %}
+    </select>
+    <label>Description</label>
+    <input
+      type="text"
+      name="description"
+      placeholder="description"
+      value="{{values.description}}"
+    />
+    <label>Amount</label>
+    <input
+      value="{{values.amount}}"
+      type="number"
+      name="amount"
+      placeholder="input amount"
+    />
+    <input type="submit" value="Update" class="btn btn-info" />
+  </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% load static %}
+
+
+
+
+<div>
+  <canvas id="myChart" width="400" height="400"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for expense in expenses %}'{{expense.category}}', {% endfor %}],
+      datasets: [{
+        label: '',
+        data: [{% for expense in expenses %} {{expense.amount}}, {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+    }
+  });
+</script>
+ {% comment %}
+<div>
+  <canvas id="myChart" width="400" height="400"> </canvas>
+</div>
+{% endcomment %} {% comment %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endcomment %} {% comment %}
+<script>
+  const renderChart = (data, labels) => {
+    const ctx = document.getElementById("myChart");
+
+    const myChart = new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "12 Month Expense",
+            data: data,
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {},
+    });
+  };
+
+  const getChartData = () => {
+    fetch("/expense_summary/")
+      .then((res) => res.json())
+      .then((results) => {
+        const category_data = results.expense_category_data;
+        const [labels, data] = [
+          Object.keys(category_data),
+          Object.values(category_data),
+        ];
+        renderChart(data, labels);
+      });
+  };
+
+  document.onload = getChartData();
+</script>
+{% endcomment %}
