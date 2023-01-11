@@ -56,7 +56,7 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
-CSRF_TRUSTED_ORIGINS = ['https://trakit.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://trakit.up.railway.app']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -100,7 +100,7 @@ DATABASES = {
         'USER': str(os.getenv('PGUSER')),
         'PASSWORD': str(os.getenv('PGPASSWORD')),
         'HOST': str(os.getenv('PGHOST')),
-        'PORT': str(os.getenv('PGPORT'))
+        'PORT': '6070'
     }
 }
 
