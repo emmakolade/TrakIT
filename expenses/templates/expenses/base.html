@@ -56,8 +56,12 @@
           </li>
           {% else %}
           <li>
+            <a href="{% url 'register' %}">Sign Up</a>
+          </li>
+          <li>
             <a href="{% url 'login' %}">Login</a>
           </li>
+
           {% endif %}
 
           <li class="max-1200" id="navOpener">
@@ -122,29 +126,30 @@
         <div class="row">
           {% if user.is_authenticated %} {% block content %} {% endblock %} 
           {% else %}
-          
-          <div class="base-ads">
             <div class="ad1">
-              <h4>
-                Easily manage and monitor your finances with the <b>TrackIT</b> app.
-                Stay on top of your budget, track expenses and income, and make
-                informed financial decisions with the convenience of having all
-                your financial information in one place
-              </h4>
-              <button><a href="{% url 'register' %}">Start Now</a></button>
+              <div class="ad1-cont">
+                <h4>
+                  Easily manage and monitor your finances with the
+                  <b>TrakIT</b> app. Stay on top of your budget, track expenses
+                  and income, and make informed financial decisions with the
+                  convenience of having all your financial information in one
+                  place
+                </h4>
+                <button><a href="{% url 'register' %}">Start Now</a></button>
+              </div>
+              <img src="{% static 'images/finance1.svg' %}" alt="" />
             </div>
-            <div class="ad2">
+            {% comment %} <div class="ad2">
               <h4>
                 Managing your finances is essential to achieving your financial
                 goals and maintaining a sense of security. By keeping track of
                 your expenses and income, you'll have a clear picture of your
                 financial situation and be able to make informed decisions about
                 how to save, invest, and budget. We highly recommend using a
-                tool like <b>TrackIT</b> app to stay organized and on top of your
+                tool like <b>TrakIT</b> app to stay organized and on top of your
                 finances.
               </h4>
-            </div>
-          </div>
+            </div> {% endcomment %}
           {% endif %}
         </div>
       </div>

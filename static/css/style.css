@@ -10668,18 +10668,26 @@ a:hover {
 }
 
 
-.base-ads {
-  display: grid;
-  justify-content: space-between;
-  color: #0056C4;
-  margin: 0 10px;
-}
 
 .ad1 {
+  display: flex;
+  justify-content: space-between;
   border: #000 2px solid;
   padding: 20px;
+  margin: 40px 10px;
+}
 
+.ad1-cont{
+padding-top: 150px;
 
+}
+.ad1-cont button{
+  margin-top: 20px;
+  margin-left: 300px;
+}
+
+.ad1 img{
+  width: 50%;
 }
 
 main.main {
