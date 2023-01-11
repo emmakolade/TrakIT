@@ -56,6 +56,8 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
+CSRF_TRUSTED_ORIGINS = ['https://trakit.up.railway.app/']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,7 +74,7 @@ ROOT_URLCONF = 'budg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,8 +88,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'budg.wsgi.application'
-
-
 
 
 # Database

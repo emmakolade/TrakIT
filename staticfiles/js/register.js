@@ -1,0 +1,75 @@
+const usernameField = document.querySelector("#usernameField");
+const feedBackArea = document.querySelector(".invalid_feedback");
+const emailField = document.querySelector("#emailField");
+const emailFeedbackArea = document.querySelector(".emailFeedbackArea");
+const passwordField = document.querySelector("#passwordField");
+const usernameSuccessOutput = document.querySelector(".usernameSuccessOutput");
+const showPassword = document.querySelector(".showPassword");
+
+const submitBtn = document.querySelector(".submit-btn");
+
+const handleToggleInput = (e) => {
+  if (showPassword.textContent === "SHOW") {
+    showPassword.textContent = "HIDE";
+    passwordField.setAttribute("type", "tet");
+  } else {
+    showPassword.textContent = "SHOW";
+    passwordField.setAttribute("type", "password");
+  }
+};
+showPassword.addEventListener("click", handleToggleInput);
+
+emailField.addEventListener("keyup", (e) => {
+  const emailVal = e.target.value;
+
+  usernameField.classList.remove("is-invalid");
+  emailFeedbackArea.style.display = "none";
+
+  if (emailVal.length > 0) {
+    fetch("/authentication/email_validate/", {
+      body: JSON.stringify({ email: emailVal }),
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data", data);
+        if (data.email_error) {
+          submitBtn.disabled = true;
+          emailField.classList.add("is-invalid");
+          emailFeedbackArea.style.display = "block";
+          emailFeedbackArea.innerHTML = `<p>${data.email_error}</p>`;
+        } else {
+          submitBtn.removeAttribute("disabled");
+        }
+      });
+  }
+});
+
+usernameField.addEventListener("keyup", (e) => {
+  const usernameVal = e.target.value;
+  usernameSuccessOutput.style.display = "block";
+
+  usernameSuccessOutput.textContent = `Checking  ${usernameVal}`;
+
+  feedBackArea.style.display = "none";
+
+  if (usernameVal.length > 0) {
+    fetch("/authentication/username_validate/", {
+      body: JSON.stringify({ username: usernameVal }),
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        usernameSuccessOutput.style.display = "none";
+
+        if (data.username_error) {
+          submitBtn.disabled = true;
+          usernameField.classList.add("is-invalid");
+          feedBackArea.style.display = "block";
+          feedBackArea.innerHTML = `<p>${data.username_error}</p>`;
+        } else {
+          submitBtn.removeAttribute("disabled");
+        }
+      });
+  }
+});
