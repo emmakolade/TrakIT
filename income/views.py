@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Source, Income
@@ -12,7 +10,6 @@ from django.http import JsonResponse
 from django.db.models import Sum
 import datetime
 
-# Create your views here.
 
 
 @login_required(login_url='/authentication/login')
