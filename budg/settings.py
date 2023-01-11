@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'expenses',
     'useroptions',
     'income',
-    'authentication,'
+    'authentication',
 ]
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
