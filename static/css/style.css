@@ -10622,11 +10622,13 @@ a:hover {
 }
 
 .logo-container .logo-text h2 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .logo-container .logo-text span {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
 }
 
 .nav-link-right {
