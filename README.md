@@ -8,7 +8,11 @@ Categories for more accurate tracking
 ## Live Page
 To get started with TrakIT, visit this website [TrakIT](https://trakit.up.railway.app/) you'll be prompted to create an account. From there, you can start adding transactions
 
-![TrakIt gif](https://user-images.githubusercontent.com/43618115/211822126-bb1e503d-d96a-4a78-baf7-f294372571b6.gif)
+## Demo
+
+![TrakIt gif](https://user-images.githubusercontent.com/43618115/211822984-432bf6f4-faab-4f64-a971-92752d9e7849.gif)
+
+## Sample
 
 ![Screenshot (139)](https://user-images.githubusercontent.com/43618115/211822307-f8135725-2e7a-4187-9062-2d8864da1003.png)
 
