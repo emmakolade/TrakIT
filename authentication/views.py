@@ -46,6 +46,8 @@ class Registration(View):
                 user.set_password(password)
                 user.is_active = True
                 user.save()
+                messages.success(request, f'account successfully created for {username}.')
+                
         return render(request, 'authentication/register.html')
 
 
