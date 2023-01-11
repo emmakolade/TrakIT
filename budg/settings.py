@@ -92,17 +92,27 @@ WSGI_APPLICATION = 'budg.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': str(os.getenv('PGDATABASE')),
-        'USER': str(os.getenv('PGUSER')),
-        'PASSWORD': str(os.getenv('PGPASSWORD')),
-        'HOST': str(os.getenv('PGHOST')),
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'zPMR1MTCeZLNkn3f5XOm',
+        'HOST': 'containers-us-west-48.railway.app',
         'PORT': '6070'
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': str(os.getenv('PGDATABASE')),
+#         'USER': str(os.getenv('PGUSER')),
+#         'PASSWORD': str(os.getenv('PGPASSWORD')),
+#         'HOST': str(os.getenv('PGHOST')),
+#         'PORT': '6070'
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
