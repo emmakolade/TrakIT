@@ -9,7 +9,8 @@
           <i class="fas fa-file-signature"></i>Transactions / Expenses
           <div id="new-expense">
             <a href="{% url 'add_expense' %}">
-              <i class="fa-regular fa-plus" id="new-expense"></i>
+              <button class="btn btn-info" id="new-expense">Add Expense</button>
+              {% comment %} <i class="fa-regular fa-plus" id="new-expense"></i> {% endcomment %}
               </a>
           </div>
           <div class="example form-group" style="margin: auto; max-width: 300px">

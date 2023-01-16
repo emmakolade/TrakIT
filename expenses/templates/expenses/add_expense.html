@@ -8,7 +8,7 @@
   </nav>
 </div>
 <div class="content">
-  <form class="form" id="add-expense-form" action="{% url 'add_expense' %}" method="post">
+  <form class="form" id="" action="{% url 'add_expense' %}" method="post">
     {% csrf_token %}
 
     <label>Category</label>
@@ -36,50 +36,4 @@
     <input type="submit" value="Add" class="btn btn-info" />
   </form>
 </div>
-
-{% comment %} <script>
-  const renderChart = (data, labels) => {
-    const ctx = document.getElementById("myChart");
-
-    const myChart = new Chart(ctx, {
-      type: "pie",
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: "12 Month Expense",
-            data: data,
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {},
-    });
-  };
-
-  const getChartData = () => {
-    fetch("/expense_summary/")
-      .then((res) => res.json())
-      .then((results) => {
-        const category_data = results.expense_category_data;
-        const [labels, data] = [
-          Object.keys(category_data),
-          Object.values(category_data),
-        ];
-        renderChart(data, labels);
-      });
-  };
-  document.onload = getChartData();
-
-  // add event listener to form to trigger chart update when form is submitted
-  const form = document.getElementById("add-expense-form");
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    // submit the form to add the new expense to the database
-    form.submit();
-    // update the chart with new data
-    getChartData();
-  });
-</script> {% endcomment %}
-
 {% endblock content %}

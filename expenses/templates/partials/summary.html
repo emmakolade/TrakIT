@@ -24,9 +24,9 @@
   <div class="chart-cont">
     <div class="account-sync">
       <button id="link-button">Link Bank Account</button>
-      <a href=""><i class="fa-solid fa-arrows-rotate"></i></a> 
+      {% comment %} <a href=""><i class="fa-solid fa-arrows-rotate"></i></a> {% endcomment %}
     </div>
-    <div style="width: 40%">{% include 'expenses/expense_stats.html' %}</div>
+    <div class="expense-chart" style="width: 40%">{% include 'expenses/expense_stats.html' %}</div>
   </div>
 </div>
 

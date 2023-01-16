@@ -105,12 +105,6 @@
             </a>
           </li>
           <li>
-            <a href="{% url 'options'%}">
-              <i class="fas fa-hands-helping"></i>
-              <span>General</span>
-            </a>
-          </li>
-          <li>
             <a href="javascript:;">
               <i class="fas fa-hands-helping"></i>
               <span>Account</span>
@@ -124,21 +118,22 @@
       <!--Main Area-->
       <div class="main-area container-fluid">
         <div class="row">
-          {% if user.is_authenticated %} {% block content %} {% endblock %} 
+          {% if user.is_authenticated %} {% block content %} 
+          {% endblock %} 
           {% else %}
-            <div class="ad1">
-              <div class="ad1-cont">
-                <h4>
-                  Easily manage and monitor your finances with the
-                  <b>TrakIT</b> app. Stay on top of your budget, track expenses
-                  and income, and make informed financial decisions with the
-                  convenience of having all your financial information in one
-                  place
-                </h4>
-                <button><a href="{% url 'register' %}">Start Now</a></button>
-              </div>
-              <img src="{% static 'images/finance1.svg' %}" alt="" />
+          <div class="ad1">
+            <div class="ad1-cont">
+              <h4>
+                Easily manage and monitor your finances with the
+                <b>TrakIT</b> app. Stay on top of your budget, track expenses
+                and income, and make informed financial decisions with the
+                convenience of having all your financial information in one
+                place
+              </h4>
+              <button><a href="{% url 'register' %}">Start Now</a></button>
             </div>
+            {% comment %} <img src="{% static 'images/finance1.svg' %}" alt="" /> {% endcomment %}
+          </div>
           {% endif %}
         </div>
       </div>

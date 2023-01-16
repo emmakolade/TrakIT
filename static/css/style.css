@@ -86,7 +86,7 @@ video {
   outline: none;
   background: #d0d6d9;
   padding: 0.938rem;
-  margin: 0.5rem 40px;
+  margin: 0.5rem 60px;
 
 }
 
@@ -10679,16 +10679,17 @@ a:hover {
   margin: 40px 10px;
 }
 
-.ad1-cont{
-padding-top: 150px;
+.ad1-cont {
+  padding-top: 150px;
 
 }
-.ad1-cont button{
+
+.ad1-cont button {
   margin-top: 20px;
   margin-left: 300px;
 }
 
-.ad1 img{
+.ad1 img {
   width: 50%;
 }
 
@@ -10925,13 +10926,30 @@ main.main div.main-area {
     display: block;
   }
 }
+.form {
+  display: grid;
+  width: 100%;
+  outline: none;
+  background: #d0d6d9;
+  padding: 0.5rem;
+  margin: 0rem 0px;
+
+}
+
+.account-sync {
+  margin-top: 75px;
+  margin-left: 0px;
+}
+
+#new-expense {
+  margin-left: 0px;
+}
 
 @media only screen and (max-width: 600px) {
-  .chart-cont {
-    display: grid;
-    padding-bottom: 20px;
-  }
+
 }
+
+ 
 
 @media only screen and (min-width: 992px) {
 
