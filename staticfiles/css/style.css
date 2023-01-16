@@ -1,5 +1,6 @@
 /* @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700); */
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap');
+
 
 
 abbr,
@@ -10528,7 +10529,7 @@ html {
   background-color: #f1f6f9;
   color: #78787a;
   /* font-family: Raleway, sans-serif; */
-  font-family: Ubuntu, sans-serif;
+  font-family: 'Alegreya Sans', sans-serif;
 
   font-size: 16px;
   height: 100%;
@@ -10621,17 +10622,20 @@ a:hover {
 }
 
 .logo-container .logo-text h2 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .logo-container .logo-text span {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
 }
 
 .nav-link-right {
   margin-top: 20px;
 }
-.nav-link-right span{
+
+.nav-link-right span {
   text-transform: capitalize;
 }
 
@@ -10663,6 +10667,29 @@ a:hover {
 .transaction-history {
   padding-left: 0;
   padding-right: 0;
+}
+
+
+
+.ad1 {
+  display: flex;
+  justify-content: space-between;
+  border: #000 2px solid;
+  padding: 20px;
+  margin: 40px 10px;
+}
+
+.ad1-cont{
+padding-top: 150px;
+
+}
+.ad1-cont button{
+  margin-top: 20px;
+  margin-left: 300px;
+}
+
+.ad1 img{
+  width: 50%;
 }
 
 main.main {

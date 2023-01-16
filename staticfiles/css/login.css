@@ -66,6 +66,9 @@ form {
 #form-reset p {
   padding-top: 10px;
 }
+small{
+  cursor: pointer;
+}
 
 form * {
   font-family: Ubuntu, sans-serif;
