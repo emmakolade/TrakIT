@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     # 'crispy_forms',
     'chartjs',
     'expenses',
-    'useroptions',
     'income',
     'authentication',
 ]
