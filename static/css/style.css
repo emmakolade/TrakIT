@@ -10935,6 +10935,9 @@ main.main div.main-area {
   margin: 0rem 0px;
 
 }
+.content{
+  width: 100%;
+}
 
 .account-sync {
   margin-top: 75px;
@@ -10942,7 +10945,7 @@ main.main div.main-area {
 }
 
 #new-expense {
-  margin-left: 0px;
+  margin-left: 60px;
 }
 
 @media only screen and (max-width: 600px) {
